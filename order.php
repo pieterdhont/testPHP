@@ -1,5 +1,5 @@
 <?php
-//order.php
+// order.php
 
 declare(strict_types=1);
 require_once 'BroodjeLijst.php';
@@ -50,9 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
 
 <body>
   <?php if (isset($broodje)): ?>
-    <h1>Bestel Broodje:
-      <?= $broodje->getNaam() ?>
-    </h1>
+    <h1>Bestel Broodje: <?= $broodje->getNaam() ?></h1>
 
     <?php if (isset($error)): ?>
       <p style="color: red;"><?= $error ?></p>
@@ -60,19 +58,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
 
     <form action="order.php" method="post">
       <input type="hidden" name="broodje_id" value="<?= $broodje_id ?>">
-      <label>
-        Voornaam: <input type="text" name="voornaam" required>
-      </label>
-      <label>
-        Achternaam: <input type="text" name="achternaam" required>
-      </label>
-      <label>
-        Email: <input type="email" name="email" required>
-      </label>
-      <label>
-        Afhalingsmoment:
-        <input type="datetime-local" name="pickup_time" required>
-      </label>
+      <label>Voornaam: <input type="text" name="voornaam" required></label>
+      <label>Achternaam: <input type="text" name="achternaam" required></label>
+      <label>Email: <input type="email" name="email" required></label>
+      <label>Afhalingsmoment: <input type="datetime-local" name="pickup_time" required></label>
       <input type="hidden" name="action" value="bestel">
       <input type="submit" value="Plaats Bestelling">
     </form>
