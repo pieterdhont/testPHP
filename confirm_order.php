@@ -33,7 +33,12 @@ if (strtotime($pickupTime) - strtotime($currentTime) < 1800) {
 }
 
 $klantLijst = new KlantLijst();
-$klantID = $klantLijst->voegKlantToe($voornaam, $achternaam, $email);
+$existingKlant = $klantLijst->getKlantByEmail($email);
+if ($existingKlant === null) {
+    $klantID = $klantLijst->voegKlantToe($voornaam, $achternaam, $email);
+} else {
+    $klantID = $existingKlant->getKlantId();
+}
 
 $bestellingLijst = new BestellingLijst();
 if ($bestellingLijst->plaatsBestelling($broodje_id, $klantID, $pickupTime)) {

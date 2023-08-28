@@ -41,4 +41,25 @@ class KlantLijst extends DatabaseConnected
       $row['email']
     );
   }
+  public function getKlantByEmail(string $email): ?Klant
+    {
+        $sql = "SELECT * FROM klanten WHERE email = :email";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$row) {
+            return null;
+        }
+
+        return new Klant(
+            (int) $row['klantID'],
+            $row['voornaam'],
+            $row['achternaam'],
+            $row['email']
+        );
+    }
+
 }
