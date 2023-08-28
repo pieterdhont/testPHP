@@ -3,15 +3,15 @@
 
 declare(strict_types=1);
 
-require_once 'Database.php';
+require_once 'DatabaseConnected.php';
 require_once 'BroodjeLijst.php';
 require_once 'KlantLijst.php';
 require_once 'StatusLijst.php';
 require_once 'Bestelling.php';
 
-class BestellingLijst
+class BestellingLijst extends DatabaseConnected
 {
-  private PDO $db;
+  
   private BroodjeLijst $broodjeLijst;
   private KlantLijst $klantLijst;
   private StatusLijst $statusLijst;

@@ -3,17 +3,12 @@
 
 declare(strict_types=1);
 
-require_once 'Database.php';
+require_once 'DatabaseConnected.php';
 require_once 'Klant.php';
 
-class KlantLijst
+class KlantLijst extends DatabaseConnected 
 {
-  private $db;
-
-  public function __construct()
-  {
-    $this->db = Database::getConnection();
-  }
+  
 
   public function voegKlantToe(string $voornaam, string $achternaam, string $email): int
   {

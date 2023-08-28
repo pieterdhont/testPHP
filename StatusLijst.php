@@ -3,17 +3,12 @@
 
 declare(strict_types=1);
 
-require_once 'Database.php';
+require_once 'DatabaseConnected.php';
 require_once 'Status.php';
 
-class StatusLijst
+class StatusLijst extends DatabaseConnected
 {
-  private PDO $db;
-
-  public function __construct()
-  {
-    $this->db = Database::getConnection();
-  }
+  
 
   public function getStatussen(): array
   {
